@@ -34,17 +34,6 @@ contract banking {
         return "Withdrawal Successful";
     }
 
-    function transfer(address payable userAddress, uint amount) public returns(string memory) {
-        require(user_account[msg.sender] > amount, "Insufficient balance in Bank account");
-        require(user_exists[msg.sender] == true, "Account is not created");
-        require(user_exists[userAddress] == true, "Transfer account does not exist");
-        require(amount > 0, "Amount should be more than zero");
-        user_account[msg.sender] = user_account[msg.sender] - amount;
-        user_account[userAddress] = user_account[userAddress] + amount;
-        return "Transfer Successful";
-    }
-
-
     function user_balance() public view returns(uint) {
         return user_account[msg.sender];
     }
